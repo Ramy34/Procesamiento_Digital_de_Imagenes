@@ -25,6 +25,10 @@ U = 0.493*(B-Y);
 V = 0.877*(R-Y);
 E = cat(3,Y,U,V);
 
+F = imcrop(A,[0 0 171 512]); %Recortamos la imagen a un tercio
+G = imcrop(A,[313.5 0.5 199 512]); %Recortamos la imagen a un tercio
+H = imcrop(A,[140 410 210 109]); %Recortamos la imagen arbitrariamente
+
 %Impresión de las imágenes
 subplot(3,4,1);
 imshow(A);
@@ -57,3 +61,15 @@ title('Imagen a YUV');
 subplot(3,4,8);
 imshow(E);
 title('Imagen a YUV por fórmula');
+
+subplot(3,4,9);
+imshow(F);
+title('Imagen recortada un tercio');
+
+subplot(3,4,10);
+imshow(G);
+title('Imagen recortada esquina inferior derecha');
+
+subplot(3,4,11);
+imshow(H);
+title('Imagen recortada arbitrariamente');
