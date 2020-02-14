@@ -1,13 +1,15 @@
 clear all; %Limpiamos el workspace
 clc; %Limpiamos el command window
 A = imread("imagenes\lena_color_512.tif"); %Leemos la imagen
+A1 = imread("imagenes2\retinaRGB.jpg"); %Leemos la imagen
+A2 = imread("imagenes2\abdomen.png"); %Leemos la imagen
 %Creamos tres matrices que tendrán los colores primarios de la imagen
 A_R = A; 
 A_G = A;
 A_B = A;
-R = A(:,:,1); 
-G = A(:,:,2);
-B = A(:,:,3);
+r = A1(:,:,1); 
+g = A1(:,:,2);
+b = A1(:,:,3);
 
 %Dejamos en 0 los colores que no nos interesan en cada matriz
 A_R(:,:,2) = 0;
@@ -16,20 +18,33 @@ A_G(:,:,1) = 0;
 A_G(:,:,3) = 0;
 A_B(:,:,1) = 0;
 A_B(:,:,2) = 0;
-b = rgb2gray(A); %RGB a escala de grises
-C = rgb2hsv(A); %RGB a hsv
-D = rgb2ycbcr(A); %RGB a YUV
+B = rgb2gray(A1); %RGB a escala de grises
+C = rgb2hsv(A1); %RGB a hsv
+D = rgb2ycbcr(A1); %RGB a YUV
 
-Y = 0.299 * R + 0.587 * G + 0.114 * B;
-U = 0.493*(B-Y);
-V = 0.877*(R-Y);
+Y = 0.299 * r + 0.587 * g + 0.114 * b;
+U = 0.493*(b-Y);
+V = 0.877*(r-Y);
 E = cat(3,Y,U,V);
+
+A_R(:,:,2) = 0;
+A_R(:,:,3) = 0;
+A_G(:,:,1) = 0;
+A_G(:,:,3) = 0;
+A_B(:,:,1) = 0;
+A_B(:,:,2) = 0;
 
 F = imcrop(A,[0 0 171 512]); %Recortamos la imagen a un tercio
 G = imcrop(A,[313.5 0.5 199 512]); %Recortamos la imagen a un tercio
 H = imcrop(A,[140 410 210 109]); %Recortamos la imagen arbitrariamente
 
 %Impresión de las imágenes
+image(A2);
+figure(2);
+% imshow(A);
+imagesc(A2);
+
+figure(3);
 subplot(3,4,1);
 imshow(A);
 title('Original');
@@ -47,7 +62,7 @@ imshow(A_B);
 title('Original solo azul');
 
 subplot(3,4,5);
-imshow(b);
+imshow(B);
 title('Imagen a escala de grises');
 
 subplot(3,4,6);
