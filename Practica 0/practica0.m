@@ -5,6 +5,10 @@ A = imread("imagenes\lena_color_512.tif"); %Leemos la imagen
 A_R = A; 
 A_G = A;
 A_B = A;
+R = A(:,:,1); 
+G = A(:,:,2);
+B = A(:,:,3);
+
 %Dejamos en 0 los colores que no nos interesan en cada matriz
 A_R(:,:,2) = 0;
 A_R(:,:,3) = 0;
@@ -12,34 +16,44 @@ A_G(:,:,1) = 0;
 A_G(:,:,3) = 0;
 A_B(:,:,1) = 0;
 A_B(:,:,2) = 0;
-B = rgb2gray(A); %RGB a escala de grises
+b = rgb2gray(A); %RGB a escala de grises
 C = rgb2hsv(A); %RGB a hsv
+D = rgb2ycbcr(A); %RGB a YUV
+
+Y = 0.299 * R + 0.587 * G + 0.114 * B;
+U = 0.493*(B-Y);
+V = 0.877*(R-Y);
+E = cat(3,Y,U,V);
 
 %Impresión de las imágenes
-subplot(2,3,1);
+subplot(3,4,1);
 imshow(A);
 title('Original');
 
-subplot(2,3,2);
+subplot(3,4,2);
 imshow(A_R);
 title('Original solo rojo');
 
-subplot(2,3,3);
+subplot(3,4,3);
 imshow(A_G);
 title('Original solo verde');
 
-subplot(2,3,4);
+subplot(3,4,4);
 imshow(A_B);
 title('Original solo azul');
 
-subplot(2,3,5);
-imshow(B);
+subplot(3,4,5);
+imshow(b);
 title('Imagen a escala de grises');
 
-subplot(2,3,6);
+subplot(3,4,6);
 imshow(C);
 title('Imagen a HSV');
 
-% subplot(1,2,4);
-% imshow(D);
-% title('Imagen a YUV');
+subplot(3,4,7);
+imshow(D);
+title('Imagen a YUV');
+
+subplot(3,4,8);
+imshow(E);
+title('Imagen a YUV por fórmula');
