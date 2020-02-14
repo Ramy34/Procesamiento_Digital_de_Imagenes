@@ -39,10 +39,10 @@ G = imcrop(A,[313.5 0.5 199 512]); %Recortamos la imagen a un tercio
 H = imcrop(A,[140 410 210 109]); %Recortamos la imagen arbitrariamente
 
 %Impresión de las imágenes
-image(A2);
-figure(2);
+% image(A2);
+% figure(2);
 % imshow(A);
-imagesc(A2);
+% imagesc(A2);
 
 figure(3);
 subplot(3,4,1);
