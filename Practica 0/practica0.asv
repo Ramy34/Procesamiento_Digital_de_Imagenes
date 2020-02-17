@@ -27,11 +27,6 @@ U = 0.493*(b-Y);
 V = 0.877*(r-Y);
 E = cat(3,Y,U,V);
 
-r = A2(:,:,1); 
-g = A3(:,:,2);
-b = A4(:,:,3);
-z
-
 A_R(:,:,2) = 0;
 A_R(:,:,3) = 0;
 A_G(:,:,1) = 0;
@@ -44,10 +39,12 @@ G = imcrop(A,[313.5 0.5 199 512]); %Recortamos la imagen a un tercio
 H = imcrop(A,[140 410 210 109]); %Recortamos la imagen arbitrariamente
 
 %Impresión de las imágenes
-image(A2);
-figure(2);
+% image(A2);
+% figure(2);
 % imshow(A);
-imagesc(A2);
+% imagesc(A2);
+
+J = imrotate(A,90);
 
 figure(3);
 subplot(3,4,1);
@@ -93,3 +90,7 @@ title('Imagen recortada esquina inferior derecha');
 subplot(3,4,11);
 imshow(H);
 title('Imagen recortada arbitrariamente');
+
+subplot(3,4,12);
+imshow(J);
+title('Imagen recortada arbitrariame');

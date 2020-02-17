@@ -44,6 +44,10 @@ H = imcrop(A,[140 410 210 109]); %Recortamos la imagen arbitrariamente
 % imshow(A);
 % imagesc(A2);
 
+J = imrotate(A,45);
+L = imrotate(A,90);
+M = imrotate(A,180);
+
 figure(3);
 subplot(3,4,1);
 imshow(A);
@@ -88,3 +92,7 @@ title('Imagen recortada esquina inferior derecha');
 subplot(3,4,11);
 imshow(H);
 title('Imagen recortada arbitrariamente');
+
+subplot(3,4,12);
+imshow(L);
+title('Imagen rotada 90°');
