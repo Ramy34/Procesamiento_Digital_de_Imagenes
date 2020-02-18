@@ -1,3 +1,7 @@
+%%Práctica 0
+%%Castro Molano Ramsés
+%%
+%%
 %%%%%%%%%%%%%%%%%% 1  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Lena = imread("imagenes2\magriclonRGB.jpg"); %Leemos la imagen
 
@@ -99,7 +103,11 @@ figure(5);
 imagesc(Abdomen);
 
 %%%%%%%%%%%%%%%%%% 6  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+figure(6);
+subplot(1,1,1);
+imshow(Abdomen);
+title('Original');
+colorbar('southoutside');
 
 %%%%%%%%%%%%%%%%%% 7  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Intestino = imread("imagenes2\cta_scan_index.bmp"); %Leemos la imagen
@@ -162,3 +170,7 @@ subplot(1,2,2);
 imshow(Mri_gray);
 title('Imagen mri blanco y negro');
 %%%%%%%%%%%%%%%%%% 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Satelite = imread("Satelital\S1A_EW_9E49_TN_Cal_dB_uint8.tif"); %Leemos la imagen
+implay(Satelite);
+re_satelite = imresize(Satelite,1/3);
+implay(re_satelite)

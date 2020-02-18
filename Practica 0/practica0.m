@@ -1,3 +1,7 @@
+%%Práctica 0
+%%Castro Molano Ramsés
+%%Ordoñez Pérez Mauricio Edward
+%%Tellez Salto Kevin
 %%%%%%%%%%%%%%%%%% 1  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Lena = imread("imagenes2\magriclonRGB.jpg"); %Leemos la imagen
 
@@ -167,5 +171,6 @@ imshow(Mri_gray);
 title('Imagen mri blanco y negro');
 %%%%%%%%%%%%%%%%%% 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Satelite = imread("Satelital\S1A_EW_9E49_TN_Cal_dB_uint8.tif"); %Leemos la imagen
-figure(10);
 implay(Satelite);
+re_satelite = imresize(Satelite,1/3);
+implay(re_satelite)
