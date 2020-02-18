@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%% 1  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Lena = imread("imagenes\lena_color_512.tif"); %Leemos la imagen
+Lena = imread("imagenes2\magriclonRGB.jpg"); %Leemos la imagen
 
 %Creamos tres matrices que tendrán los colores primarios de la imagen
 A_R = Lena; 
@@ -64,13 +64,14 @@ imshow(Retina_yuv);
 title('Imagen a YUV');
 
 %%%%%%%%%%%%%%%%%% 3  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-F = imcrop(Lena,[0 0 171 512]); %Recortamos la imagen a un tercio
-G = imcrop(Lena,[313.5 0.5 199 512]); %Recortamos la imagen a un tercio
-H = imcrop(Lena,[140 410 210 100]); %Recortamos la imagen arbitrariamente
+Corte = imread("imagenes2\corte.bmp"); %Leemos la imagen
+F = imcrop(Corte,[0 0 171 512]); %Recortamos la imagen a un tercio
+G = imcrop(Corte,[313.5 0.5 199 512]); %Recortamos la imagen a un tercio
+H = imcrop(Corte,[140 410 210 100]); %Recortamos la imagen arbitrariamente
 
 figure(3);
 subplot(2,2,1);
-imshow(Lena);
+imshow(Corte);
 title('Original');
 
 subplot(2,2,2);
@@ -86,6 +87,7 @@ imshow(H);
 title('Imagen recortada arbitrariamente');
 
 %%%%%%%%%%%%%%%%%% 4  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Corte = imread("imagenes2\rxpie-rodilla.tif"); %Leemos la imagen
 image(Lena);
 figure(4);
 imshow(Lena);
@@ -97,39 +99,45 @@ figure(5);
 imagesc(Abdomen);
 
 %%%%%%%%%%%%%%%%%% 6  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+figure(6);
+subplot(1,1,1);
+imshow(Abdomen);
+title('Original');
+colorbar('southoutside');
 
 %%%%%%%%%%%%%%%%%% 7  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Cte = imread("imagenes2\cta_scan_index.bmp"); %Leemos la imagen
+Intestino = imread("imagenes2\cta_scan_index.bmp"); %Leemos la imagen
 
 figure(7);
 subplot(2,2,1);
-imshow(Cte);
+imshow(Intestino);
 title('Original');
 
 Winter = subplot(2,2,2);
-imshow(Cte);
+imshow(Intestino);
 colormap(Winter, winter);
 title('Imagen Winter');
 
 Summer = subplot(2,2,3);
-imshow(Cte);
+imshow(Intestino);
 colormap(Summer, summer);
 title('Imagen Summer');
 
 Spring = subplot(2,2,4);
-imshow(Cte);
+imshow(Intestino);
 colormap(Spring, spring);
 title('Imagen Spring');
 
 %%%%%%%%%%%%%%%%%% 8  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-J = imrotate(Lena,45);
-L = imrotate(Lena,90);
-M = imrotate(Lena,180);
+Cte = imread("imagenes2\cta_scan_index.bmp"); %Leemos la imagen
+
+J = imrotate(Cte,45);
+L = imrotate(Cte,90);
+M = imrotate(Cte,180);
 
 figure(8);
 subplot(2,2,1);
-imshow(Lena);
+imshow(Cte);
 title('Original');
 
 subplot(2,2,2);
@@ -158,3 +166,6 @@ subplot(1,2,2);
 imshow(Mri_gray);
 title('Imagen mri blanco y negro');
 %%%%%%%%%%%%%%%%%% 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Satelite = imread("Satelital\S1A_EW_9E49_TN_Cal_dB_uint8.tif"); %Leemos la imagen
+figure(10);
+implay(Satelite);
