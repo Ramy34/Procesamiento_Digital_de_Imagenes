@@ -39,34 +39,34 @@ r = Retina(:,:,1);
 g = Retina(:,:,2);
 b = Retina(:,:,3);
 
-B = rgb2gray(Retina); %RGB a escala de grises
-C = rgb2hsv(Retina); %RGB a hsv
+Retina_gray = rgb2gray(Retina); %RGB a escala de grises
+Retina_hsv = rgb2hsv(Retina); %RGB a hsv
 Y = 0.299 * r + 0.587 * g + 0.114 * b;
 U = 0.493*(b-Y);
 V = 0.877*(r-Y);
-E = cat(3,Y,U,V);
+Retina_yuv = cat(3,Y,U,V);
 
 figure(2);
 subplot(2,2,1);
-imshow(B);
+imshow(Retina);
 title('Original');
 
 subplot(2,2,2);
-imshow(B);
+imshow(Retina_gray);
 title('Imagen a escala de grises');
 
 subplot(2,2,3);
-imshow(C);
+imshow(Retina_hsv);
 title('Imagen a HSV');
 
 subplot(2,2,4);
-imshow(E);
+imshow(Retina_yuv);
 title('Imagen a YUV');
 
 %%%%%%%%%%%%%%%%%% 3  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 F = imcrop(Lena,[0 0 171 512]); %Recortamos la imagen a un tercio
 G = imcrop(Lena,[313.5 0.5 199 512]); %Recortamos la imagen a un tercio
-H = imcrop(Lena,[140 410 210 109]); %Recortamos la imagen arbitrariamente
+H = imcrop(Lena,[140 410 210 100]); %Recortamos la imagen arbitrariamente
 
 figure(3);
 subplot(2,2,1);
@@ -98,7 +98,29 @@ imagesc(Abdomen);
 
 %%%%%%%%%%%%%%%%%% 6  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 %%%%%%%%%%%%%%%%%% 7  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Cte = imread("imagenes2\cta_scan_index.bmp"); %Leemos la imagen
+
+figure(7);
+subplot(2,2,1);
+imshow(Cte);
+title('Original');
+
+Winter = subplot(2,2,2);
+imshow(Cte);
+colormap(Winter, winter);
+title('Imagen Winter');
+
+Summer = subplot(2,2,3);
+imshow(Cte);
+colormap(Summer, summer);
+title('Imagen Summer');
+
+Spring = subplot(2,2,4);
+imshow(Cte);
+colormap(Spring, spring);
+title('Imagen Spring');
 
 %%%%%%%%%%%%%%%%%% 8  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 J = imrotate(Lena,45);
@@ -124,15 +146,15 @@ title('Imagen rotada 180°');
 
 %%%%%%%%%%%%%%%%%% 9  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Mri = imread("imagenes2\mri.jpg"); %Leemos la imagen
-Z = rgb2gray(A3); %RGB a escala de grises
-imwrite(Z,'mri.tif');
+Mri_gray = rgb2gray(Mri); %RGB a escala de grises
+imwrite(Mri_gray,'mri.tif');
 
 figure(9);
 subplot(1,2,1);
-imshow(A3);
+imshow(Mri);
 title('Imagen mri');
 
 subplot(1,2,2);
-imshow(Z);
+imshow(Mri_gray);
 title('Imagen mri blanco y negro');
 %%%%%%%%%%%%%%%%%% 10 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
