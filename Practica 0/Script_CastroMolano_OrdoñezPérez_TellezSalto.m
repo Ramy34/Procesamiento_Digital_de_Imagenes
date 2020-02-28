@@ -1,7 +1,8 @@
-%%Pr�ctica 0
-%%Castro Molano Rams�s
-%%
-%%
+%%Práctica 0
+%%Castro Molano Ramsés
+%%Ordoñez Pérez Mauricio Edward
+%%Tellez Salto Kevin
+
 %%%%%%%%%%%%%%%%%% 1  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Lena = imread("imagenes2\magriclonRGB.jpg"); %Leemos la imagen
 
@@ -92,9 +93,9 @@ title('Imagen recortada arbitrariamente');
 
 %%%%%%%%%%%%%%%%%% 4  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Corte = imread("imagenes2\rxpie-rodilla.tif"); %Leemos la imagen
-image(Lena);
+image(Corte);
 figure(4);
-imshow(Lena);
+imshow(Corte);
 
 %%%%%%%%%%%%%%%%%% 5  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Abdomen = imread("imagenes2\abdomen.png"); %Leemos la imagen
